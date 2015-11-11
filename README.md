@@ -1,6 +1,7 @@
 #API For Accessing And Organising Higher Education Statistics
 ## Data Representation And Querying Project 2015
-#By Steven Long
+###-- By Steven Long 
+###-- G00317230
 
 ##Introduction
   This project provides the design and documentation for the dataset "Enrolments (full-time, part-time and remote) by Level, Field of Study (ISCED) and Gender" which covers the 2014/2015 academic year and can be found at http://www.hea.ie/node/1557.
@@ -22,18 +23,23 @@
     - **Female**: the total number of enrolments to this institute by females.
     - **Total**: the total number of enrolments to this institute.
   
-  The tables also contain total enrolments to all institutes contained in that table. These can br represented as such:
-  - *Type of Institute*: The type of institute to which this data belongs; one of University, College, or Institute of Technology.
+  The tables also contain total enrolments to all institutes contained in that table. These can be represented as such:
     - ***Field of Study***: The field of study to which these enrolments belong.
       - **Total Males**: The total number of enrolments by males to this field of study.
       - **Total Females**: The total number of enrolments by females to this field of study.
       - **Total Enrolments**: The total number of enrolments to this field of study.
 
-  Finally, the tables also contain the total number of enrolments for all institutes of this type. This can be represented as such:
+  The tables also contain the total number of enrolments for all institutes of this type. This can be represented as such:
   - *Type of Institute*: The type of institute to which this data belongs; one of University, College, or Institute of Technology.
     - **Total Males**: The overall total number of male enrolments to this type of institute.
     - **Total Females**: The overall total number of female enrolments to this type of institute.
     - **Total Enrolments**: The overall total number of enrolments to this type of institute.
+
+  Finally, the totals in each table are subtotalled by the type of fields they belong to. This can be represented as such:
+    - *Total Type*: The field to which the subtotal belongs.
+      - **Total Male**: The number of male enrolments for this field.
+      - **Total Female**: The number of female enrolments for this field.
+      - **Total Enrolments**: The number of enrolments to this field type.
 
 ##API Design
   The data can be retrieved via a set of URLs which, when accessed using the GET method, will return the relevant data in JSON format. The following are some examples of this:
@@ -46,11 +52,30 @@ will return the enrolment numbers for Honours Bachelor Degrees in institutes of 
         ```
 
   The above data represents:
-  - **institute**: the name of the institute.
-    - *male*: the number of male enrolments for this institute under the requested field (in this case Honours Bachelor Degrees).
-    - *females*: the number of female enrolments for this institute under the requested field (in this case Honours Bachelor Degrees).
-    - *totals*: the number of enrolments for this institute under the requested field (in this case Honours Bachelor Degrees).
+  
+  
+  Type | Name | Discription |
+  -----|------|-------------|
+  String | institute |  the name of the institute |
+  Integer | male | the number of male enrolments for this institute under the requested field (in this case Honours Bachelor Degrees) |
+  Integer | female | the number of female enrolments for this institute under the requested field (in this case Honours Bachelor Degrees) |
+  Integer | total | the number of enrolments for this institute under the requested field (in this case Honours Bachelor Degrees) |
+  
+  Using the URL: *http://heastats.com/gmit/totals*
+will return the enrolment number totals and sub totals for the selected institute (in this case GMIT). The response to this would look like:
+          ```json
+          [{"Type": "FETAC", "Total Male": 193, "Total Female": 18, "Total Enrolments": 211}, {"Type": "Undergraduate Total", "Total Male": 3640, ...}, {...}, ...]
+          ```
 
-
+  The above data represents:
+  
+  Type | Name | Discription |
+  -----|------|-------------|
+  String | Type | The type of field which to the enrolment totals and subtotals belong |
+  Integer | Total Male | The total number of male enrolments for this field |
+  Integer | Total Female | The total number of female enrolments for this field |
+  Integer | Total Enrolments | The total number of enrolments for this field |
+  
+  Using the URL: *http://heastats.com/*
 
 ##Users
