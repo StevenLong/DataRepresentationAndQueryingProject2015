@@ -38,11 +38,10 @@
     - **Total Enrolments**: The overall total number of enrolments to this type of institute.
 
   Finally, the totals in each table are subtotalled by the type of fields they belong to. This can be represented as such:
-   
-   - *Total Type*: The field to which the subtotal belongs.
-     - **Total Male**: The number of male enrolments for this field.
-     - **Total Female**: The number of female enrolments for this field.
-     - **Total Enrolments**: The number of enrolments to this field type.
+  - *Total Type*: The field to which the subtotal belongs.
+   - **Total Male**: The number of male enrolments for this field.
+   - **Total Female**: The number of female enrolments for this field.
+   - **Total Enrolments**: The number of enrolments to this field type.
 
 ##API Design
   The data can be retrieved via a set of URLs which, when accessed using the GET method, will return the relevant data in JSON format. The following are some examples of this:
