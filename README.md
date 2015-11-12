@@ -19,15 +19,15 @@
   
   The tables also contain totals for each institute regardless of field of study. These can be represented as such:
   - *Institute*: The institute to which the data belongs.
-    - **Male**: the total number of enrolments to this institute by males.
-    - **Female**: the total number of enrolments to this institute by females.
-    - **Total**: the total number of enrolments to this institute.
+     - **Male**: the total number of enrolments to this institute by males.
+     - **Female**: the total number of enrolments to this institute by females.
+     - **Total**: the total number of enrolments to this institute.
   
   The tables also contain total enrolments to all institutes contained in that table. These can be represented as such:
-    - ***Field of Study***: The field of study to which these enrolments belong.
-      - **Total Males**: The total number of enrolments by males to this field of study.
-      - **Total Females**: The total number of enrolments by females to this field of study.
-      - **Total Enrolments**: The total number of enrolments to this field of study.
+  - *Field of Study*: The field of study to which these enrolments belong.
+   - **Total Males**: The total number of enrolments by males to this field of study.
+   - **Total Females**: The total number of enrolments by females to this field of study.
+   - **Total Enrolments**: The total number of enrolments to this field of study.
 
   The tables also contain the total number of enrolments for all institutes of this type. This can be represented as such:
   - *Type of Institute*: The type of institute to which this data belongs; one of University, College, or Institute of Technology.
@@ -36,10 +36,11 @@
     - **Total Enrolments**: The overall total number of enrolments to this type of institute.
 
   Finally, the totals in each table are subtotalled by the type of fields they belong to. This can be represented as such:
-    - *Total Type*: The field to which the subtotal belongs.
-      - **Total Male**: The number of male enrolments for this field.
-      - **Total Female**: The number of female enrolments for this field.
-      - **Total Enrolments**: The number of enrolments to this field type.
+   
+   - *Total Type*: The field to which the subtotal belongs.
+   - **Total Male**: The number of male enrolments for this field.
+   - **Total Female**: The number of female enrolments for this field.
+   - **Total Enrolments**: The number of enrolments to this field type.
 
 ##API Design
   The data can be retrieved via a set of URLs which, when accessed using the GET method, will return the relevant data in JSON format. The following are some examples of this:
@@ -63,6 +64,7 @@ will return the enrolment numbers for Honours Bachelor Degrees in institutes of 
   
   Using the URL: *http://heastats.com/gmit/totals*
 will return the enrolment number totals and sub totals for the selected institute (in this case GMIT). The response to this would look like:
+
           ```json
           [{"Type": "FETAC", "Total Male": 193, "Total Female": 18, "Total Enrolments": 211}, {"Type": "Undergraduate Total", "Total Male": 3640, ...}, {...}, ...]
           ```
