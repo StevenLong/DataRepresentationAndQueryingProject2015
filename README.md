@@ -9,7 +9,7 @@
   It should be noted that the dataset used here is used for example. This API can be applied to the dataset from any other year much to the same effect.
 
 ##Dataset Overview
-  This dataset contains data for all full-time, part-time and remote enrolments for Irish Unversities, Colleges and Institutes of Technology, organised by gender of the applicant and the field of study to which they have enrolled. The dataset contains total number of enrolments for all Universities, Colleges and ITs, as well as totals for each individual University, College and IT. All of these totals are available as a male/female breakdown as well. The dataset was recieved in .xlsx (Microsoft Excel Open XML Document) format, and was downloaded from (http://www.hea.ie/node/1557).
+  This dataset contains data for all full-time, part-time and remote enrolments for Irish Universities, Colleges and Institutes of Technology, organised by gender of the applicant and the field of study to which they have enrolled. The dataset contains total number of enrolments for all Universities, Colleges and ITs, as well as totals for each individual University, College and IT. All of these totals are available as a male/female breakdown as well. The dataset was received in .xlsx (Microsoft Excel Open XML Document) format, and was downloaded from (http://www.hea.ie/node/1557).
 
 ###Data types
   The dataset contains 3 tables, one for Universities, one for Colleges, and one for Institutes of Technology. These tables contain roughly the same types of data. The data is broken down into enrolment numbers for each institute, and is then further broken down into male and female numbers. They can be represented as such:
@@ -98,4 +98,4 @@ will return enrolment number totals and subtotals for the selected type of insti
 
 ##Users
   
-  
+  The type of users this API could be useful to is a broad and varied. One of the primary uses for this API is to help determine the proper allocation of funding and resources for both institutes and for the various fields those institutes provide. It can also be used to determine overall interest in the individual fields, allowing institutes to schedule more of less of said fields as needed. It can also be used, in conjunction with course completion data, to determine success rates of courses, as well as the number of newly qualified individuals.
