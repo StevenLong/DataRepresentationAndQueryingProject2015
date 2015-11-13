@@ -4,15 +4,15 @@
 ###-- G00317230
 
 ##Introduction
-  This project provides the design and documentation for the dataset "Enrolments (full-time, part-time and remote) by Level, Field of Study (ISCED) and Gender" which covers the 2014/2015 academic year and can be found at http://www.hea.ie/node/1557. 
+  This project provides the design and documentation for an API which allows easy access and organisation of the dataset "Enrolments (full-time, part-time and remote) by Level, Field of Study (ISCED) and Gender" which covers the 2014/2015 academic year and can be found at http://www.hea.ie/node/1557. 
 
-  It should be noted that the dataset used here is used for example. This API can be applied to the dataset from any other year much to the same effect.
+  It should be noted that the dataset used here is used for example, and this API can be applied to the dataset from any other academic year much to the same effect.
 
 ##Dataset Overview
-  This dataset contains data for all full-time, part-time and remote enrolments for Irish Universities, Colleges and Institutes of Technology, organised by gender of the applicant and the field of study to which they have enrolled. The dataset contains total number of enrolments for all Universities, Colleges and ITs, as well as totals for each individual University, College and IT. All of these totals are available as a male/female breakdown as well. The dataset was received in .xlsx (Microsoft Excel Open XML Document) format, and was downloaded from (http://www.hea.ie/node/1557).
+  This dataset contains data for all full-time, part-time and remote enrolments for Irish Universities, Colleges and Institutes of Technology, organised by gender of the applicant and the field of study to which they have enrolled. The dataset contains total number of enrolments for all Universities, Colleges and ITs, as well as totals for each individual University, College and IT. All of these totals are available as a male/female breakdown as well. The dataset was received in .xlsx (Microsoft Excel Open XML Document) format, and was downloaded from (http://www.hea.ie/node/1557). The dataset contains 3 tables, one for Universities, one for Colleges, and one for Institutes of Technology. Each row of the dataset represents a field to which students can enrol (for example, Honours Bachelor Degrees), or represents a total of a type of field (for example, total undergraduates), or grand total. Three columns are dedicated to each institute, one for male enrolments, one for female enrolments, and one for total enrolments. The last three columns are dedicated to the totals of the other columns, one for total male enrolments, one for total female enrolments, and one as a grand total for that row.
 
 ###Data types
-  The dataset contains 3 tables, one for Universities, one for Colleges, and one for Institutes of Technology. These tables contain roughly the same types of data. The data is broken down into enrolment numbers for each institute, and is then further broken down into male and female numbers. They can be represented as such:
+  The 3 tables contain roughly the same types of data. The data is broken down into enrolment numbers for each institute, and is then further broken down into male and female numbers. They can be represented as such:
   - *Institute*: the institute to which the data belongs.
     - ***Field of Study***: The field of study to which these enrolments belong.
       - **Male**: the number of enrolments by males for this field of study.
@@ -44,7 +44,16 @@
    - **Total Enrolments**: The number of enrolments to this field type.
 
 ##API Design
-  The data can be retrieved via a set of URLs which, when accessed using the GET method, will return the relevant data in JSON format. The following are some examples of this:
+  The data can be retrieved via a set of URLs which, when accessed using the GET method, will return the relevant data in JSON format. In order to retrieve data the user must access the relevant URL. The URLs are formatted as follows:
+  
+ - All of the URLs start *http://heastats.com/*
+ - The path after the above URL determines the data returned
+ - Using the URL *http://heastats.com/[institute]*, where *[institute]* is replaced with the name of the institute for which data is desired, will return the data from every row and column related to that institute
+ - Using the URL *http://heastats.com/[institute]/[field]*, where *[institute]* is replaced with the name of the institute and *[field]* is replaced with the name of the field for which information is desired, will return all columns pertaining to that field in that institute.
+ - Using the URL *http://heastats.com/[ins_type]/[total_type]*, where *[ins_type]* is replaced with the type of institute and *[total_type]* is replaced with the desired total, will return all rows and columns pertaining to the desired total type for that institute type
+
+  
+  The following are some working examples of the API:
   
   Using the URL: *http://heastats.com/its/hbd*
 will return the enrolment numbers for Honours Bachelor Degrees in institutes of technology. The response to this would look like:`
@@ -97,4 +106,4 @@ will return enrolment number totals and subtotals for the selected type of insti
 
 ##Users
   
-  The type of users this API could be useful to is a broad and varied. One of the primary uses for this API is to help determine the proper allocation of funding and resources for both institutes and for the various fields those institutes provide. It can also be used to determine overall interest in the individual fields, allowing institutes to schedule more of less of said fields as needed. It can also be used, in conjunction with course completion data, to determine success rates of courses, as well as the number of newly qualified individuals.
+  The type of users this API could be useful to is a broad and varied group. One of the primary uses for this API is to help determine the proper allocation of funding and resources for both institutes and for the various fields those institutes provide. It can also be used to determine overall interest in the individual fields, allowing institutes to schedule more of less of said fields as needed. It can also be used, in conjunction with course completion data, to determine success rates of courses, as well as the number of newly qualified individuals that will likely be entering the workforce.
